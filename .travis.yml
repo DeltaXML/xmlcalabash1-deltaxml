@@ -14,6 +14,9 @@ env:
   - secure: JhUMNLuJcDgdCaVcl9vQ3wgsEwzoeMprb1FcdYyNsiMc3fzhozydrJNT33t6eqYiF05tuJvh+rYOaumCEbGDx76PiZPnfQPbNvOYkGgZiFxm/zb805sMA9U84F/QrN8P1nc625PPkl8WnGtFOquJiPgI72+2TX18ed0h4niMt3A=
   - secure: MS/WRRrDH9UJV42kUpcyZTo1cZAeHYRZbaITsxbKFr2884i0hepDRdK4ze8TA8UDQYH4HqHM7dJg4/eOo15jmSxG7G/UxXLgwkZGYbF7RtyxuQiE43+pomWwAWNtPk2y/Eq1GJxnJePRjDgQa1E0RY4RvKC5vwjYYYoDO0f4Sko=
 
+after_script:
+- rm -rf lib
+
 deploy:
   provider: releases
   api_key:
