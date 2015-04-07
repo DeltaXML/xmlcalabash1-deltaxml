@@ -60,6 +60,10 @@ compileJava {
   classpath += configurations.localLibs
 }
 
+javadoc {
+  classpath += configurations.localLibs
+}
+
 task copyLib(type: Copy) {
   FileCollection lib = configurations.copydep
   String path = ""
@@ -67,9 +71,6 @@ task copyLib(type: Copy) {
     File file -> path += " lib/" + file.name
   }
   project.ext.runtimeClasspath = path.trim()
-
-  from lib
-  into { "build/dist/lib" }
 }
 
 task copyCatalog(type: Copy) {
@@ -121,8 +122,6 @@ gradle.taskGraph.whenReady { taskGraph ->
 
 task copyStuff(type: Copy) {
   from 'resources/README.md'
-  from 'resources/catalog.xml'
-  from 'resources/library.xpl'
   into 'build/dist'
 }
 
