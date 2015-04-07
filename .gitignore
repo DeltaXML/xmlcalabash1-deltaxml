@@ -1,3 +1,4 @@
 /build/
 /.gradle/
-/lib/
+/lib/*.jar
+/lib/*.lic
