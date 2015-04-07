@@ -121,7 +121,8 @@ gradle.taskGraph.whenReady { taskGraph ->
 }
 
 task copyStuff(type: Copy) {
-  from 'resources/README.md'
+  from 'README.md'
+  from 'LICENSE.md'
   into 'build/dist'
 }
 
