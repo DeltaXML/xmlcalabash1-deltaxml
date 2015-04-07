@@ -1,0 +1,20 @@
+<document xmlns:deltaxml="http://www.deltaxml.com/ns/well-formed-delta-v1"
+          xmlns:t="http://xproc.org/ns/testsuite"
+          xmlns:dxx="http://www.deltaxml.com/ns/xml-namespaced-attribute"
+          xmlns:dxa="http://www.deltaxml.com/ns/non-namespaced-attribute"
+          deltaxml:deltaV2="A!=B"
+          deltaxml:version="2.0"
+          deltaxml:content-type="changes-only">
+   <title deltaxml:deltaV2="A=B"/>
+   <para deltaxml:deltaV2="A!=B">
+      <deltaxml:textGroup deltaxml:deltaV2="A!=B">
+         <deltaxml:text deltaxml:deltaV2="A">Some paragraph.</deltaxml:text>
+         <deltaxml:text deltaxml:deltaV2="B">Some changed paragraph.</deltaxml:text>
+      </deltaxml:textGroup>
+   </para>
+   <para deltaxml:deltaV2="A=B"/>
+   <para deltaxml:deltaV2="B">Some new paragraph.</para>
+   <deltaxml:textGroup deltaxml:deltaV2="B">
+      <deltaxml:text deltaxml:deltaV2="B"/>
+   </deltaxml:textGroup>
+</document>
