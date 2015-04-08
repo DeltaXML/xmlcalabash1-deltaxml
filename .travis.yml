@@ -23,7 +23,6 @@ deploy:
     secure: CeHSwi5T/PY6+ORQocVlrBbY7c4YnPTqwwCrGMQjrS+1ZN5NyNuBebfu9yrVMToctA611vSziNr3y6jGl5ZZfpuDJjYGe9iDK4o6sv9KjUyPS6NACVJVq8h/Qf45eOnjSTwrKN3swBeQVWNtSYAfiJgZyLL7ZOJaXMHJELNISLA=
   file:
   - build/distributions/xmlcalabash1-deltaxml-$TRAVIS_TAG.zip
-  - build/libs/xmlcalabash1-deltaxml-$TRAVIS_TAG.jar
   on:
     tags: true
     all_branches: true
