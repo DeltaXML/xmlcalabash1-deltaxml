@@ -157,6 +157,14 @@ task copyJavaDoc(dependsOn: javadoc, type: Copy) {
   into "build/dist/docs"
 }
 
+task testStep(type: JavaExec) {
+  classpath = configurations.localLibs + configurations.runtime + sourceSets.main.output
+
+  main = 'com.xmlcalabash.drivers.Main'
+  maxHeapSize = "1024m"
+  args('-D', '-a', 'src/test/resources/test-pipeline.xpl')
+}
+
 task makeDist(dependsOn: [ build, copyJar, copyLib ]) << {
   println "Created distribution in build/dist"
 }
@@ -167,17 +175,8 @@ task zipDist(dependsOn: makeDist, type: Zip) {
   archiveName 'xmlcalabash1-deltaxml-' + distVersion + ".zip"
 }
 
-task dist(dependsOn: zipDist) << {
+task dist(dependsOn: [testStep, zipDist]) << {
   // nop
-}
-
-task testDeltaXML(type: JavaExec) {
-  classpath = configurations.compile + configurations.localLibs
-  main = 'com.xmlcalabash.drivers.Main'
-  args('-D',
-       '-isource=src/test/resources/doc-a.xml',
-       '-ialternate=src/test/resources/doc-b.xml',
-       'src/test/resources/compare.xpl')
 }
 
 artifacts {
