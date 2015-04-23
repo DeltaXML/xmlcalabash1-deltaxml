@@ -10,12 +10,22 @@ import com.xmlcalabash.runtime.XAtomicStep;
 import com.xmlcalabash.util.S9apiUtils;
 import com.deltaxml.core.DXPConfiguration;
 import com.deltaxml.core.PipelinedComparator;
+import com.xmlcalabash.util.XProcURIResolver;
 import net.sf.saxon.s9api.*;
 
+import javax.xml.transform.Source;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXSource;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.io.StringReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 
 /**
@@ -31,6 +41,8 @@ import org.xml.sax.InputSource;
         type = "{http://xmlcalabash.com/ns/extensions}delta-xml")
 
 public class DeltaXML extends DefaultStep {
+    private static final String library_xpl = "http://xmlcalabash.com/extension/steps/delta-xml.xpl";
+
     private ReadablePipe source = null;
     private ReadablePipe alternate = null;
     private ReadablePipe dxp = null;
@@ -95,6 +107,49 @@ public class DeltaXML extends DefaultStep {
             result.write(doc);
         } catch (Exception e) {
             throw new XProcException(e);
+        }
+    }
+
+    public static void configureStep(XProcRuntime runtime) {
+        XProcURIResolver resolver = runtime.getResolver();
+        URIResolver uriResolver = resolver.getUnderlyingURIResolver();
+        URIResolver myResolver = new StepResolver(uriResolver);
+        resolver.setUnderlyingURIResolver(myResolver);
+    }
+
+    private static class StepResolver implements URIResolver {
+        Logger logger = LoggerFactory.getLogger(DeltaXML.class);
+        URIResolver nextResolver = null;
+
+        public StepResolver(URIResolver next) {
+            nextResolver = next;
+        }
+
+        @Override
+        public Source resolve(String href, String base) throws TransformerException {
+            try {
+                URI baseURI = new URI(base);
+                URI xpl = baseURI.resolve(href);
+                if (library_xpl.equals(xpl.toASCIIString())) {
+                    URL url = DeltaXML.class.getResource("/library.xpl");
+                    logger.debug("Reading library.xpl for cx:asciidoctor from " + url);
+                    InputStream s = DeltaXML.class.getResourceAsStream("/library.xpl");
+                    if (s != null) {
+                        SAXSource source = new SAXSource(new InputSource(s));
+                        return source;
+                    } else {
+                        logger.info("Failed to read library.xpl for cx:deltaxml");
+                    }
+                }
+            } catch (URISyntaxException e) {
+                // nevermind
+            }
+
+            if (nextResolver != null) {
+                return nextResolver.resolve(href, base);
+            } else {
+                return null;
+            }
         }
     }
 }

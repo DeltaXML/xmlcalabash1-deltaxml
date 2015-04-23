@@ -6,7 +6,7 @@
                 exclude-inline-prefixes="c cx dx">
 <p:output port="result"/>
 
-<p:import href="../../../resources/library.xpl"/>
+<p:import href="http://xmlcalabash.com/extension/steps/delta-xml.xpl"/>
 
 <cx:delta-xml>
   <p:input port="source">
