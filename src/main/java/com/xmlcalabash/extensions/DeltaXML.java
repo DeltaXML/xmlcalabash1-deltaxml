@@ -42,6 +42,7 @@ import org.xml.sax.InputSource;
 
 public class DeltaXML extends DefaultStep {
     private static final String library_xpl = "http://xmlcalabash.com/extension/steps/delta-xml.xpl";
+    private static final String library_url = "/com/xmlcalabash/extensions/delta-xml/library.xpl";
 
     private ReadablePipe source = null;
     private ReadablePipe alternate = null;
@@ -131,14 +132,14 @@ public class DeltaXML extends DefaultStep {
                 URI baseURI = new URI(base);
                 URI xpl = baseURI.resolve(href);
                 if (library_xpl.equals(xpl.toASCIIString())) {
-                    URL url = DeltaXML.class.getResource("/library.xpl");
-                    logger.debug("Reading library.xpl for cx:asciidoctor from " + url);
-                    InputStream s = DeltaXML.class.getResourceAsStream("/library.xpl");
+                    URL url = DeltaXML.class.getResource(library_url);
+                    logger.debug("Reading library.xpl for cx:delta-xml from " + url);
+                    InputStream s = DeltaXML.class.getResourceAsStream(library_url);
                     if (s != null) {
                         SAXSource source = new SAXSource(new InputSource(s));
                         return source;
                     } else {
-                        logger.info("Failed to read library.xpl for cx:deltaxml");
+                        logger.info("Failed to read " + library_url + " for cx:delta-xml");
                     }
                 }
             } catch (URISyntaxException e) {
