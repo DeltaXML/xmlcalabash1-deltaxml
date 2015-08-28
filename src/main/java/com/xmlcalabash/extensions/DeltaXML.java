@@ -54,6 +54,15 @@ public class DeltaXML extends DefaultStep {
         super(runtime,step);
     }
 
+    public static boolean isAvailable() {
+        try {
+            Class<?> name = Class.forName("com.deltaxml.core.DXPConfiguration", false, DeltaXML.class.getClassLoader());
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+        return true;
+    }
+
     public void setInput(String port, ReadablePipe pipe) {
         if ("source".equals(port)) {
             source = pipe;
