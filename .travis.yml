@@ -2,22 +2,22 @@ language: java
 script: "./gradlew dist"
 
 before_install:
-- lib/update-lib.sh
+  - lib/update-lib.sh
 
 install:
-- echo sonatypeUsername=none >> gradle.properties
-- echo sonatypePassword=none >> gradle.properties
+  - echo sonatypeUsername=none >> gradle.properties
+  - echo sonatypePassword=none >> gradle.properties
 
 after_script:
-- rm -rf lib
+  - rm -rf lib
 
 deploy:
   provider: releases
   api_key:
     secure: diAQ+/x06i8nNyD0UizkbVU6wwIDDqciL2V3EjxjPDucyPcTrK3ck/07+PcMRpe7Za68Ol9fqkchrA3e7vUtBtq+wy3EPP/8NGXPDMR4K39a1mJJLMAii0K0WitnOY/bv8wAtU+dkExYKkWEX9Qq7cT0gaYjmzJe/S+ozRndOrI=
   file: test
-  - build/distributions/xmlcalabash1-deltaxml-$TRAVIS_TAG.zip
+    - build/distributions/xmlcalabash1-deltaxml-$TRAVIS_TAG.zip
   on:
-  - tags: true
-  - repo: ndw/xmlcalabash1-deltaxml
+    - tags: true
+    - repo: ndw/xmlcalabash1-deltaxml
   skip_cleanup: true
