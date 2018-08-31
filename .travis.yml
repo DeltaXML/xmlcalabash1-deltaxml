@@ -1,9 +1,15 @@
 language: java
 script: "./gradlew dist"
 
+before_install:
+- lib/update-lib.sh
+
 install:
 - echo sonatypeUsername=none >> gradle.properties
 - echo sonatypePassword=none >> gradle.properties
+
+after_script:
+- rm -rf lib
 
 deploy:
   provider: releases
