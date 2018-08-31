@@ -3,16 +3,16 @@
 [![Build Status](https://travis-ci.org/ndw/xmlcalabash1-deltaxml.svg?branch=master)](https://travis-ci.org/ndw/xmlcalabash1-deltaxml.svg?branch=master)
 
 This repository contains an
-[XML Calabash](http://github.com/ndw/xmlcalabash1) 1.0 extension
+[XML Calabash](https://github.com/ndw/xmlcalabash1) 1.0 extension
 step that can compare XML documents using
-[DeltaXML](http://www.deltaxml.com/).
+[DeltaXML](https://www.deltaxml.com/).
 
 This step should work with either Saxon 9.5 or Saxon 9.6.
 
 ## Installation
 
 For standalone installation, get the most recent release from the project
-[releases](http://github.com/ndw/xmlcalabash1-deltaxml/releases) page.
+[releases](https://github.com/ndw/xmlcalabash1-deltaxml/releases) page.
 The release distributed there includes
 relevant dependencies. Unpack it somewhere on your system and add the
 included, top-level `jar` file to your class path.
