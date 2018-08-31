@@ -1,5 +1,5 @@
 language: java
-script: ./gradlew dist
+script: "./gradlew dist"
 
 install:
 - echo sonatypeUsername=none >> gradle.properties
@@ -8,9 +8,10 @@ install:
 deploy:
   provider: releases
   api_key:
-    secure: CeHSwi5T/PY6+ORQocVlrBbY7c4YnPTqwwCrGMQjrS+1ZN5NyNuBebfu9yrVMToctA611vSziNr3y6jGl5ZZfpuDJjYGe9iDK4o6sv9KjUyPS6NACVJVq8h/Qf45eOnjSTwrKN3swBeQVWNtSYAfiJgZyLL7ZOJaXMHJELNISLA=
-  file:
+    secure: diAQ+/x06i8nNyD0UizkbVU6wwIDDqciL2V3EjxjPDucyPcTrK3ck/07+PcMRpe7Za68Ol9fqkchrA3e7vUtBtq+wy3EPP/8NGXPDMR4K39a1mJJLMAii0K0WitnOY/bv8wAtU+dkExYKkWEX9Qq7cT0gaYjmzJe/S+ozRndOrI=
+  file: test
   - build/distributions/xmlcalabash1-deltaxml-$TRAVIS_TAG.zip
   on:
-    tags: true
-    all_branches: true
+  - tags: true
+  - repo: ndw/xmlcalabash1-deltaxml
+  skip_cleanup: true
