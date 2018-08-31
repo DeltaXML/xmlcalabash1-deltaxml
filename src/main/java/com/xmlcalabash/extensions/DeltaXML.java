@@ -49,7 +49,6 @@ public class DeltaXML extends DefaultStep {
     private ReadablePipe dxp = null;
     private WritablePipe result = null;
 
-    /** Creates a new instance of Unzip */
     public DeltaXML(XProcRuntime runtime, XAtomicStep step) {
         super(runtime,step);
     }
