@@ -7,7 +7,7 @@ This repository contains an
 step that can compare XML documents using
 [DeltaXML](https://www.deltaxml.com/).
 
-This step should work with either Saxon 9.5 or Saxon 9.6.
+This step should work with any recent XML Calabash release.
 
 ## Installation
 
