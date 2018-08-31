@@ -5,18 +5,6 @@ install:
 - echo sonatypeUsername=none >> gradle.properties
 - echo sonatypePassword=none >> gradle.properties
 
-before_install:
-- lib/update-lib.sh
-
-env:
-  global:
-  - secure: X+UZiXvs3f5Hion1v1nG5pygUC1rdIXC1hialjK9u6pa3AFSxJakZmcvM5AAzmU7JRKgSm+iuxcv2qb5hjhlGngGyQSv1hEizYZkVKwow6DrkzBC3QeU9WJ/7CMMDi3tRTsTATmSM5OPpG8+JkT+KzyM+5a4XpvX7MaLpcFCf5s=
-  - secure: JhUMNLuJcDgdCaVcl9vQ3wgsEwzoeMprb1FcdYyNsiMc3fzhozydrJNT33t6eqYiF05tuJvh+rYOaumCEbGDx76PiZPnfQPbNvOYkGgZiFxm/zb805sMA9U84F/QrN8P1nc625PPkl8WnGtFOquJiPgI72+2TX18ed0h4niMt3A=
-  - secure: MS/WRRrDH9UJV42kUpcyZTo1cZAeHYRZbaITsxbKFr2884i0hepDRdK4ze8TA8UDQYH4HqHM7dJg4/eOo15jmSxG7G/UxXLgwkZGYbF7RtyxuQiE43+pomWwAWNtPk2y/Eq1GJxnJePRjDgQa1E0RY4RvKC5vwjYYYoDO0f4Sko=
-
-after_script:
-- rm -rf lib
-
 deploy:
   provider: releases
   api_key:
