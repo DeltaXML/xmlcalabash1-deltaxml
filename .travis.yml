@@ -19,6 +19,6 @@ deploy:
   file: test
     - build/distributions/xmlcalabash1-deltaxml-$TRAVIS_TAG.zip
   on:
+    all_branches: true
     tags: true
-    repo: ndw/xmlcalabash1-deltaxml
-  skip_cleanup: true
+
