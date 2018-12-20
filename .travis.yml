@@ -10,6 +10,7 @@ install:
 
 after_script:
   - rm -rf lib
+  - ls -lR
 
 deploy:
   provider: releases
