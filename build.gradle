@@ -57,8 +57,12 @@ project.ext.releaseVersion = version
 project.ext.distVersion = version + snapshot
 version = project.ext.distVersion // - gets turned into . in some contexts
 
-wrapper {
-    gradleVersion = '4.9'
+if (!project.hasProperty('sonatypeUsername')) {
+  project.ext.sonatypeUsername="none"
+}
+
+if (!project.hasProperty('sonatypePassword')) {
+  project.ext.sonatypePassword="none"
 }
 
 compileJava {
