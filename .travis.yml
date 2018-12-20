@@ -13,6 +13,7 @@ after_script:
   - ls -lR
 
 deploy:
+  skip_cleanup: true
   provider: releases
   api_key:
     secure: diAQ+/x06i8nNyD0UizkbVU6wwIDDqciL2V3EjxjPDucyPcTrK3ck/07+PcMRpe7Za68Ol9fqkchrA3e7vUtBtq+wy3EPP/8NGXPDMR4K39a1mJJLMAii0K0WitnOY/bv8wAtU+dkExYKkWEX9Qq7cT0gaYjmzJe/S+ozRndOrI=
@@ -21,4 +22,3 @@ deploy:
   on:
     all_branches: true
     tags: true
-
