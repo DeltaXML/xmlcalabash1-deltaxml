@@ -1,7 +1,11 @@
 language: java
 script: ./gradlew dist
 
+before_install:
+  - lib/update-lib.sh
+
 after_script:
+  - rm -rf lib
   - ls -lR
 
 deploy:
