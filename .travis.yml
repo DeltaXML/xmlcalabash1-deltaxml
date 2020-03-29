@@ -1,8 +1,13 @@
 language: java
-script: ./gradlew dist
+
+script: "./gradlew dist"
 
 before_install:
   - lib/update-lib.sh
+
+install:
+  - echo sonatypeUsername=none >> gradle.properties
+  - echo sonatypePassword=none >> gradle.properties
 
 after_script:
   - rm -rf lib
@@ -11,8 +16,9 @@ deploy:
   skip_cleanup: true
   provider: releases
   api_key:
-    secure: diAQ+/x06i8nNyD0UizkbVU6wwIDDqciL2V3EjxjPDucyPcTrK3ck/07+PcMRpe7Za68Ol9fqkchrA3e7vUtBtq+wy3EPP/8NGXPDMR4K39a1mJJLMAii0K0WitnOY/bv8wAtU+dkExYKkWEX9Qq7cT0gaYjmzJe/S+ozRndOrI=
+    secure: YJpfHcHwjvKITZur9WQgiZbICxYbf499AHuDUBRjzoGLXFXBQV3spnILI5tQ2E/laL8RnZs/byYdNdOGLMIjY4Oyoq3/iE63RhZTXuP3P9lK8CqIqnHIYMZAc/jby+QG1AuSI1MlhAI5Q22myrXni9RyC3jNgQ4XiChXh+rpdYE=
   file: build/distributions/xmlcalabash1-deltaxml-$TRAVIS_TAG.zip
+  skip_cleanup: true
   on:
     all_branches: true
     tags: true
